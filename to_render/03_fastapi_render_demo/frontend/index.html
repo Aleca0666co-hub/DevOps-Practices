@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Frontend mínimo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Mini proyecto FastAPI + Frontend</h1>
+  <button onclick="getHello()">Haz clic</button>
+  <p id="response"></p>
+
+  <script>
+    async function getHello() {
+      const res = await fetch("http://localhost:8000/hello"); // Render servirá backend y frontend juntos
+      const data = await res.json();
+      document.getElementById("response").innerText = data.message;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+fastapi-frontend-demo/
+│
+├── app/
+│   ├── main.py
+│   ├── requirements.txt
+│   └── Dockerfile
+│
+└── frontend/
+    ├── index.html
+    └── style.css

@@ -1,0 +1,25 @@
+h1{
+    margin: auto;
+    text-align: center;
+    margin-top: 2rem;
+
+}
+
+button{
+    margin-top: 1rem;
+    margin-left: 45%;
+    height: 7vh;
+    width: 10vw;
+
+    font-size: 1rem;
+    background-color: blanchedalmond;
+    border: 3px solid black ;
+    border-radius: 10px;
+}
+
+
+p{
+    text-align: center;
+    font-size: 2rem
+
+}
