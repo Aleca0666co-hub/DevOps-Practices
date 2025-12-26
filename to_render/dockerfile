@@ -1,3 +1,0 @@
-FROM alpine:3.19
-
-CMD ["echo", "Hola mundo desde render con docker"]

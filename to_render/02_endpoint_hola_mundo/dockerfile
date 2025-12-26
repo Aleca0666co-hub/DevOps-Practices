@@ -1,11 +1,20 @@
+# 1. Imagen base
 FROM python:3.11-slim
 
+# 2. Directorio de trabajo dentro del contenedor
 WORKDIR /app
 
-RUN pip install -r requirements.txt
+# 3. Copiar dependencias
+COPY requirements.txt .
 
+# 4. Instalar dependencias
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 5. Copiar el código
 COPY main.py .
 
+# 6. Exponer el puerto (informativo)
 EXPOSE 8000
 
-CMD ["uvicorn", "main:app" , "--host" ,"0.0.0.0" ,"--port" ,"8000"] 
+# 7. Comando de ejecución
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
