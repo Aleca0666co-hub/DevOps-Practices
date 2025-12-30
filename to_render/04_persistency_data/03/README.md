@@ -4,7 +4,7 @@
 1. Crea un volumen:
 
 ```bash
-docker volume create mydata
+docker volume create mydata 
 ```
 
 2. Ejecuta:
