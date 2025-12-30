@@ -12,7 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY main.py .
 
 # Copiar frontend (index.html y style.css) dentro de /app/static
-COPY ../frontend /app/static
+COPY frontend /app/static
 
 # Exponer puerto (Render usa $PORT)
 ENV PORT=10000
