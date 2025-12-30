@@ -9,7 +9,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copiar backend
-COPY main.py .
+COPY app/main.py .
 
 # Copiar frontend (index.html y style.css) dentro de /app/static
 COPY frontend /app/static
