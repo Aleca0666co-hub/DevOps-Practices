@@ -12,9 +12,15 @@
 
   <script>
     async function getHello() {
-      const res = await fetch("http://localhost:10000/hello"); // Render servirá backend y frontend juntos
-      const data = await res.json();
-      document.getElementById("response").innerText = data.message;
+      // Usar ruta relativa para que funcione en local y en producción cuando backend/frontend sirven desde el mismo origen
+      try {
+        const res = await fetch("/hello");
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        document.getElementById("response").innerText = data.message;
+      } catch (err) {
+        document.getElementById("response").innerText = "Error al conectar: " + err.message;
+      }
     }
   </script>
 </body>
