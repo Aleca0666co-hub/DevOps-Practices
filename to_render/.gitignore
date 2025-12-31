@@ -1,3 +1,7 @@
 docs_render_logs.txt
 *docs.txt
 test.txt
+
+
+__pycache__/
+*.pyc
