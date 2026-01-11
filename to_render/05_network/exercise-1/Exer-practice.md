@@ -48,7 +48,7 @@ Construir y ejecutar:
 
 ```bash
 docker build -t data_api .
-docker run -d --name proveedor --network red_api data_api
+docker run -d -p 8000:8000 --name proveedor --network red_api data_api
 ```
 
 ---
@@ -129,3 +129,19 @@ Si quieres, en el siguiente paso puedo:
 * Hacer un ejercicio tipo **examen práctico**
 
 Solo dime 👍
+
+
+---
+
+
+[Host]  <--no hace falta-->
+         |
+         |  (opcional -p)
++--------------------------+
+|        mi_red bridge     |
+|  +-------------------+  |
+|  | proveedor         |  |  0.0.0.0:8000 interno
+|  +-------------------+  |
+|  | consumidor        |  |  consume http://proveedor:8000
+|  +-------------------+  |
++--------------------------+
