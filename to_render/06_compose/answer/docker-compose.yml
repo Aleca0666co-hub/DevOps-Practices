@@ -1,0 +1,51 @@
+
+version: "3.9"
+
+services:
+  db_v1:
+    image: postgres:15
+    container_name: db_v1
+    environment:
+      POSTGRES_USER: ale
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: demo
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - mi_red
+
+  c1_v1:
+    build: ./c1_v1
+    container_name: c1_v1
+    environment:
+      DB_HOST: db_v1
+      DB_USER: ale
+      DB_PASS: 1234
+      DB_NAME: demo
+    ports:
+      - "8001:8000"
+    depends_on:
+      - db_v1
+    networks:
+      - mi_red
+
+  c2_v1:
+    build: ./c2_v1
+    container_name: c2_v1
+    environment:
+      DB_HOST: db_v1
+      DB_USER: ale
+      DB_PASS: 1234
+      DB_NAME: demo
+    ports:
+      - "8002:8000"
+    depends_on:
+      - db_v1
+    networks:
+      - mi_red
+
+networks:
+  mi_red:
+
+volumes:
+  pgdata:
