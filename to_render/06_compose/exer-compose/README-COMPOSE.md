@@ -40,6 +40,7 @@ services:
       POSTGRES_DB: demo
     volumes:
       - pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - mi_red
 
@@ -88,7 +89,7 @@ volumes:
 Compose crea `mi_red` automáticamente.
 
 ### ✔ Ya no necesitas `docker run`  
-Todo se levanta con:
+Todo se dolevanta con:
 
 ```bash
 docker compose up --build
