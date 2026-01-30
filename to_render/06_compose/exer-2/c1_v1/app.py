@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 import psycopg2
 import os
+from pydantic import BaseModel
 
 app = FastAPI(title="API Contenedor C1_V1")
 
@@ -17,6 +18,12 @@ def get_connection():
         dbname=DB_NAME
     )
 
+# Modelo para recibir datos en JSON
+class Producto(BaseModel):
+    id: int
+    nombre: str
+    precio: float
+
 @app.get("/productos")
 def obtener_productos():
     conn = get_connection()
@@ -25,3 +32,15 @@ def obtener_productos():
     rows = cur.fetchall()
     conn.close()
     return {"productos": rows}
+
+@app.post("/productos")
+def agregar_producto(producto: Producto):
+    conn = get_connection()
+    cur = conn.cursor()
+    cur.execute(
+        "INSERT INTO productos (id, nombre, precio) VALUES (%s, %s, %s);",
+        (producto.id, producto.nombre, producto.precio)
+    )
+    conn.commit()
+    conn.close()
+    return {"mensaje": "Producto agregado correctamente", "producto": producto.dict()}
